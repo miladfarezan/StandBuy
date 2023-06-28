@@ -1,0 +1,587 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+@import "_variables.scss";
+@mixin transition {
+  transition: 0.5s;
+}
+@font-face {
+  font-family: "font-vazir";
+  src: url("../font/Vazirmatn-UI-FD-Light.woff2");
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "font-vazir";
+  background-color: map-get($colors, color-background);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 1250px) {
+    max-width: 90%;
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 85%;
+  }
+  @media screen and (max-width: 500px) {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+
+.backdrop {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10;
+}
+.open-modal {
+  opacity: 1 !important;
+  pointer-events: visible !important;
+  right: 0 !important;
+}
+.modal {
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  right: -20%;
+  width: 100%;
+  direction: rtl;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: lighten(map-get($colors, color-background), 10%);
+  @include transition();
+  @media (min-width: 65rem) {
+    display: none;
+  }
+}
+.modal-items {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin-top: 90px;
+  width: 100%;
+  a {
+    text-decoration: none;
+  }
+
+  .modal-item {
+    border-bottom: 1px solid map-get($colors, color-font-p);
+    padding: 15px 52px;
+    @media screen and (max-width: 1024px) {
+      padding: 15px 7.5%;
+    }
+    @media screen and (max-width: 500px) {
+      padding: 15px 25px;
+    }
+    span {
+      font-weight: bold;
+      font-size: 18px;
+      color: map-get($colors, color-font-h1);
+    }
+    span:hover {
+      color: map-get($colors, color-hover);
+      @include transition();
+    }
+  }
+}
+.madal-item-Support {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  .number-21 {
+    font-weight: 100;
+  }
+}
+
+.container-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  @media (max-width: 1250px) {
+    max-width: 90%;
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 85%;
+  }
+  @media screen and (max-width: 500px) {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+.close-position-header {
+  position: absolute;
+}
+
+.main-header {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 88px;
+  background-color: map-get($colors, color-background);
+  direction: rtl;
+  border-bottom: 1px solid map-get($colors, color-font-p);
+}
+.background-change-color {
+  background-color: #1a1a1a !important;
+  transition: all 0.3s;
+  border-bottom: 1px solid transparent;
+}
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  .main-nav-items-left {
+    .main-nav-item-left {
+      display: none;
+    }
+    @media (min-width: 30rem) {
+      .main-nav-item-left {
+        display: inline-block;
+        font-size: 17px;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: map-get($colors, color-font-h1);
+    }
+    .main-nav-item-left-first {
+      color: map-get($colors, color-font-h1);
+      font-weight: bold;
+      padding: 0.9rem 1.4rem;
+      span {
+        @include transition();
+      }
+
+      .chevron-down {
+        font-size: 13px;
+        padding-right: 5px;
+        transform-origin: center;
+        transition: all 0.5s;
+      }
+      .open-chevron-down {
+        transform: rotateX(180deg);
+      }
+    }
+    .open-main-nav-item-left-first {
+      color: #686868;
+    }
+    .main-nav-icon-left {
+      margin-left: 2rem;
+      margin-right: 0.3rem;
+      color: map-get($colors, color-font-h1);
+      font-size: 17px;
+    }
+    .main-nav-icon-left:hover {
+      @include transition();
+      color: map-get($colors, color-hover);
+    }
+  }
+
+  .main-nav-items-right {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    .main-nav-item-right {
+      display: none;
+    }
+    @media (min-width: 65rem) {
+      .main-nav-item-right {
+        margin-left: 35px;
+        font-size: 17px;
+        display: block;
+      }
+    }
+
+    .main-nav-item-right:hover a {
+      color: map-get($colors, color-hover);
+      @include transition();
+    }
+    a {
+      text-decoration: none;
+      color: map-get($colors, color-font-h1);
+    }
+    .main-nav-icon-right {
+      font-size: 15px;
+      color: map-get($colors, color-background);
+      background: #e8e8e8;
+      border-radius: 50%;
+      padding: 1rem;
+    }
+
+    .hamburger-menu-container {
+      width: 1.5rem;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .hamburger-menu-item {
+        width: 100%;
+        height: 1.6px;
+        background: map-get($colors, color-font-h1);
+        transform-origin: left;
+        transition: all 0.3s;
+      }
+    }
+
+    .open-hamburger-menu {
+      .hamburger-menu-item-top {
+        transform: rotate(45deg);
+      }
+      .hamburger-menu-item-middle {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+      .hamburger-menu-item-bottom {
+        transform: rotate(-45deg);
+      }
+    }
+    @media (min-width: 65rem) {
+      .hamburger-menu-container {
+        display: none;
+      }
+    }
+  }
+}
+.modal-name {
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  width: 140px;
+  left: 11%;
+  top: 30px;
+  background: #343434;
+  height: auto;
+  @include transition();
+  @media screen and (max-width: 1300px) {
+    left: 2%;
+  }
+  @media screen and (max-width: 1250px) {
+    left: 5%;
+  }
+  @media screen and (max-width: 1024px) {
+    left: 7%;
+  }
+  @media screen and (max-width: 500px) {
+    left: 25px;
+  }
+  .modal-titels {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 10px 0;
+    .modal-title {
+      width: 100%;
+      height: 50%;
+      padding: 5px 0;
+      cursor: pointer;
+      a {
+        text-decoration: none;
+      }
+      p {
+        text-decoration: none;
+        color: map-get($colors, color-font-h1);
+        font-weight: 700;
+        height: 50%;
+        margin-right: 15px;
+      }
+    }
+    .modal-title:hover {
+      background: #292929;
+    }
+  }
+}
+.open-modal-name {
+  top: 70px !important;
+  opacity: 1 !important;
+  pointer-events: visible !important;
+}
+.open-modal-exit-useraccont {
+  opacity: 1 !important;
+  pointer-events: visible !important;
+  top: 50% !important;
+}
+.modal-exit-userAccont {
+  background-color: lighten(map-get($colors, color-background), 10%);
+  height: auto;
+  width: 400px;
+  position: fixed;
+  z-index: 10;
+  top: 35%;
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-50%);
+  @include transition();
+  @media screen and (max-width: 450px) {
+    width: 85%;
+  }
+  .container-property-modal {
+    padding: 20px;
+    .container-title-info {
+      margin-bottom: 25px;
+      .title-modal {
+        color: map-get($colors, color-font-h1);
+        margin-bottom: 5px;
+      }
+      .info-modal {
+        color: lighten(map-get($colors, color-background), 50%);
+      }
+    }
+    .container-btn-modal {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      justify-content: space-between;
+      a {
+        width: 49%;
+        height: 55px;
+        font-weight: 700;
+        cursor: pointer;
+        button {
+          width: 100%;
+          height: 100%;
+          color: map-get($colors, color-font-h1);
+          font: inherit;
+          font-size: 19px;
+          border: none;
+        }
+      }
+      .btn-exit {
+        background: #f34747;
+      }
+      .btn-close {
+        background: lighten(map-get($colors, color-background), 15%);
+      }
+    }
+  }
+}
+body {
+  direction: rtl;
+  margin-top: 89px;
+}
+
+.container-sidebar-and-subscription {
+  padding-bottom: 100px;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  direction: rtl;
+  border-left: 1px solid lighten(map-get($colors, color-background), 20%);
+  padding: 30px;
+  @media screen and (max-width: 800px) {
+    position: fixed;
+    border-left: none;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    border-top: 1px solid lighten(map-get($colors, color-background), 20%);
+    padding: 0;
+    background: map-get($colors, color-background);
+  }
+  @media screen and (max-width: 450px) {
+    height: 90px;
+  }
+}
+.container-items-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  @media screen and (max-width: 800px) {
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.container-item-sidebar {
+  margin-bottom: 10px;
+  width: 100%;
+  transition: all 0.3s;
+  @media screen and (max-width: 800px) {
+    margin-bottom: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: none !important;
+  }
+  a {
+    text-decoration: none;
+  }
+  .container-icon-sidebar {
+    display: none;
+    color: map-get($colors, color-font-h1);
+    font-size: 22px;
+    @media screen and (max-width: 800px) {
+      display: block;
+    }
+    @media screen and (max-width: 450px) {
+      font-size: 18px;
+    }
+  }
+  .container-icon-2-sidebar {
+    color: #fa6256;
+  }
+  .container-title-sidebar {
+    padding: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    animation: AnimationFont 0.3s 0s 1;
+    @media screen and (max-width: 800px) {
+      padding: 0;
+    }
+    @media screen and (max-width: 450px) {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+  .container-title-sidebar-2 {
+    p {
+      color: #fa6256;
+    }
+  }
+  .container-title-sidebar-1 {
+    color: map-get($colors, color-font-h1);
+  }
+}
+.container-item-sidebar-2 {
+  background: #260d0a;
+}
+@keyframes AnimationFont {
+  from {
+    font-size: 4px;
+  }
+  to {
+    font-size: 16px;
+  }
+}
+.container-sidebar-and-profile {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  padding-bottom: 100px;
+}
+
+.user-profile {
+  width: calc(100% - 260px);
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
+  .container-user-profile {
+    padding: 35px;
+    border-bottom: 1px solid lighten(map-get($colors, color-background), 20%);
+    @media screen and (max-width: 800px) {
+      padding: 35px 200px;
+    }
+    @media screen and (max-width: 700px) {
+      padding: 35px;
+    }
+    .title-user-profile {
+      color: lighten(map-get($colors, color-background), 70%);
+      font-size: 15px;
+      padding-bottom: 20px;
+    }
+  }
+}
+.container-input {
+  width: 300px;
+  height: 50px;
+  margin-bottom: 15px;
+  @media screen and (max-width: 450px) {
+    width: 100%;
+  }
+  input {
+    padding: 0 15px;
+    color: map-get($colors, color-font-h1);
+    width: 100%;
+    height: 100%;
+    font: inherit;
+    font-weight: 500;
+    outline: none;
+    background: lighten(map-get($colors, color-background), 4%);
+    border: 1px solid lighten(map-get($colors, color-background), 20%);
+  }
+  input:focus {
+    border: 1px solid lighten(map-get($colors, color-background), 40%);
+  }
+}
+.container-btn-form-box {
+  width: 100px;
+  height: 60px;
+  padding-top: 5px;
+  button {
+    width: 100%;
+    height: 100%;
+    font: inherit;
+    font-weight: bold;
+    font-size: 19px;
+    color: lighten(map-get($colors, color-background), 50%);
+    outline: none;
+    background: lighten(map-get($colors, color-background), 10%);
+    @include transition();
+    cursor: pointer;
+  }
+  button:hover {
+    background: lighten(map-get($colors, color-background), 20%);
+    color: lighten(map-get($colors, color-background), 90%);
+  }
+}
+
+.container-recovery-password {
+  padding: 35px;
+  .title-recovery-password {
+    color: lighten(map-get($colors, color-background), 70%);
+    padding-bottom: 20px;
+  }
+  .container-btn-recovery-password {
+    margin-top: 0px;
+    a {
+      padding: 10px 20px;
+      background: #fa6256;
+      text-decoration: none;
+      font-weight: 800;
+      color: map-get($colors, color-font-h1);
+      font-size: 18px;
+      @include transition();
+    }
+    a:hover {
+      background: #972820;
+    }
+  }
+}

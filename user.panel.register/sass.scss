@@ -1,0 +1,451 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+@import "_variables.scss";
+@mixin transition {
+  transition: all 0.5s;
+}
+@font-face {
+  font-family: "font-vazir";
+  src: url("../font/Vazirmatn-UI-FD-Light.woff2");
+}
+html {
+  scroll-behavior: smooth;
+}
+.container-header {
+  max-width: 1550px;
+  margin: 0 auto;
+}
+
+body {
+  margin: 0;
+  font-family: "font-vazir";
+  background-color: map-get($colors, color-background);
+}
+.open-backdrop {
+  display: block !important;
+}
+.open-rules {
+  opacity: 1 !important;
+  left: 50% !important ;
+  pointer-events: visible !important ;
+}
+.container-backdrop-and-rules {
+  max-width: 1550px;
+  margin: 0 auto;
+}
+.backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 20;
+}
+.container-rules {
+  padding: 30px;
+  @media screen and (max-width: 450px) {
+    padding: 15px;
+  }
+}
+.rules {
+  background: #1a1a1a;
+  position: fixed;
+  left: 60%;
+  top: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-50%);
+  direction: rtl;
+  width: 410px;
+  height: auto;
+  z-index: 20;
+  margin: auto;
+  font-size: 10px;
+  @include transition();
+  @media screen and (max-width: 430px) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .container-title-and-close-btn {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    .title-rules {
+      color: map-get($colors, color-font-h1);
+      font-size: 25px;
+      @media screen and (max-width: 430px) {
+        font-size: 20px;
+      }
+      @media screen and (max-width: 300px) {
+        font-size: 18px;
+      }
+    }
+    p {
+      color: map-get($colors, color-font-h1);
+      border-radius: 50%;
+      background: lighten(map-get($colors, color-font-p), 50%);
+      width: 1.5rem;
+      height: 1.5rem;
+
+      .icon {
+        margin-top: 4px;
+        margin-right: 6.5px;
+        font-size: 18px;
+      }
+    }
+  }
+  .containre-description {
+    .description-rules {
+      color: lighten(map-get($colors, color-font-p), 50%);
+      font-size: 15px;
+      @media screen and (min-width: 400px) {
+        font-size: 14px;
+      }
+    }
+  }
+}
+.open-modal {
+  opacity: 1 !important;
+  pointer-events: visible !important;
+  right: 0 !important;
+}
+.modal {
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  right: -20%;
+  width: 100%;
+  direction: rtl;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: lighten(map-get($colors, color-background), 10%);
+  @include transition();
+  @media (min-width: 65rem) {
+    display: none;
+  }
+}
+.modal-items {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin-top: 90px;
+  width: 100%;
+  a {
+    text-decoration: none;
+  }
+
+  .modal-item {
+    border-bottom: 1px solid map-get($colors, color-font-p);
+    padding: 15px 52px;
+    @media screen and (max-width: 1024px) {
+      padding: 15px 7.5%;
+    }
+    @media screen and (max-width: 500px) {
+      padding: 15px 25px;
+    }
+    a {
+      font-weight: bold;
+      font-size: 18px;
+      color: map-get($colors, color-font-h1);
+    }
+    a:hover {
+      color: map-get($colors, color-hover);
+      @include transition();
+    }
+  }
+  .madal-item-Support {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    .number-21 {
+      font-weight: 100;
+    }
+  }
+}
+.container-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  @media (max-width: 1250px) {
+    max-width: 90%;
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 85%;
+  }
+  @media screen and (max-width: 500px) {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+.container-main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.main-header {
+  background-color: map-get($colors, color-background);
+  direction: rtl;
+  border: 1px solid map-get($colors, color-font-p);
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  width: 100%;
+  height: 88px;
+}
+.main-nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  .main-nav-items-left {
+    z-index: 10;
+    .main-nav-item-left {
+      font-size: 17px;
+    }
+    a {
+      text-decoration: none;
+      color: map-get($colors, color-font-h1);
+    }
+
+    .main-nav-icon-left {
+      margin-right: 0.3rem;
+      color: map-get($colors, color-font-h1);
+      font-size: 17px;
+    }
+    .main-nav-icon-left:hover {
+      @include transition();
+      color: map-get($colors, color-hover);
+    }
+  }
+
+  .main-nav-items-right {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    .main-nav-item-right {
+      display: none;
+    }
+    @media (min-width: 65rem) {
+      .main-nav-item-right {
+        margin-left: 35px;
+        font-size: 17px;
+        display: block;
+      }
+    }
+    .main-nav-item-right:hover a {
+      color: map-get($colors, color-hover);
+      @include transition();
+    }
+    a {
+      text-decoration: none;
+      color: map-get($colors, color-font-h1);
+    }
+    .main-nav-icon-right {
+      font-size: 15px;
+
+      color: map-get($colors, color-background);
+      background: #e8e8e8;
+      border-radius: 50%;
+      padding: 1rem;
+    }
+  }
+  .hamburger-menu-container {
+    width: 1.5rem;
+    height: 1.2rem;
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .hamburger-menu-item {
+      width: 100%;
+      height: 0.1rem;
+      background: map-get($colors, color-font-h1);
+      transform-origin: left;
+      transition: all 0.3s;
+    }
+  }
+  .open-hamburger-menu {
+    .hamburger-menu-item-top {
+      transform: rotate(45deg);
+    }
+    .hamburger-menu-item-middle {
+      transform: translatex(-20px);
+      opacity: 0;
+    }
+    .hamburger-menu-item-bottom {
+      transform: rotate(-45deg);
+    }
+  }
+  @media (min-width: 65rem) {
+    .hamburger-menu-container {
+      display: none;
+    }
+  }
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  direction: rtl;
+}
+.box-form {
+  width: 430px;
+  height: auto;
+  border: 1px solid lighten(map-get($colors, color-background), 20%);
+  margin: 0 auto;
+  margin-top: 60px;
+  border-top: 8px solid lighten(map-get($colors, color-background), 20%);
+  @media screen and (max-width: 450px) {
+    width: 90%;
+    margin: 30px auto;
+  }
+}
+.container-form-box {
+  padding: 25px;
+  @media screen and (max-width: 450px) {
+    font-size: 10px;
+  }
+}
+.title-form-box {
+  color: map-get($colors, color-font-h1);
+  margin-bottom: 5px;
+  @media screen and (max-width: 450px) {
+    font-size: 25px;
+  }
+}
+.info-form-box {
+  color: lighten(map-get($colors, color-background), 70%);
+  font-size: 18px;
+  font-weight: 300;
+  padding-bottom: 15px;
+  @media screen and (max-width: 450px) {
+    font-size: 16px;
+  }
+}
+
+.container-input {
+  width: 100%;
+  height: 52px;
+  position: relative;
+  margin-top: 15px;
+
+  input {
+    color: map-get($colors, color-font-h1);
+    width: 100%;
+    height: 100%;
+    padding-right: 15px;
+    padding-left: 45px;
+    font-size: 15px;
+    font-family: "font-vazir";
+    outline: none;
+    border: 1px solid lighten(map-get($colors, color-background), 20%);
+    background: lighten(map-get($colors, color-background), 4%);
+    transition: all 0.3s;
+  }
+  input::placeholder {
+    font-size: 15px;
+    font-weight: 100;
+    color: lighten(map-get($colors, color-background), 40%);
+  }
+  input:focus {
+    border: 1px solid lighten(map-get($colors, color-background), 40%);
+  }
+  .icon-eye {
+    color: lighten(map-get($colors, color-background), 30%);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    font-size: 17px;
+    color: lighten(map-get($colors, color-background), 25%);
+  }
+}
+.container-btn-form {
+  width: 100%;
+  height: 58px;
+  margin-top: 15px;
+
+  button {
+    border: 1px solid lighten(map-get($colors, color-background), 10%);
+    width: 100%;
+    height: 100%;
+    outline: none;
+    font: inherit;
+    font-size: 20px;
+    background: lighten(map-get($colors, color-background), 10%);
+    color: lighten(map-get($colors, color-background), 40%);
+    @include transition();
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid lighten(map-get($colors, color-background), 10%);
+  }
+  button:hover {
+    background: lighten(map-get($colors, color-background), 20%);
+    color: lighten(map-get($colors, color-background), 70%);
+    border: 1px solid lighten(map-get($colors, color-background), 20%);
+  }
+}
+.container-forget-password {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  a {
+    text-decoration: none;
+    font-size: 13px;
+    color: #db564b;
+    font-weight: bold;
+  }
+}
+label {
+  color: lighten(map-get($colors, color-background), 50%);
+  margin-right: 15px;
+  font-size: 15px;
+  margin-top: 5px;
+  display: block;
+  font-weight: none;
+}
+.container-forget-password {
+  .forget-password {
+    font-weight: 0;
+    color: lighten(map-get($colors, color-background), 50%);
+    font-size: 13px;
+  }
+  .rules-btn {
+    color: #db564b;
+    font-weight: 800;
+    cursor: pointer;
+  }
+}
+.container-last-info {
+  text-align: center;
+  padding-top: 20px;
+  margin-bottom: 40px;
+  @media screen and (max-width: 450px) {
+    padding-top: 0;
+  }
+  span {
+    color: lighten(map-get($colors, color-background), 40%);
+    font-size: 18px;
+  }
+  a {
+    font-weight: bold;
+    color: map-get($colors, color-font-h1);
+    font-size: 18px;
+  }
+}

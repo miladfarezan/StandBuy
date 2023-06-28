@@ -1,0 +1,356 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+@import "_variables.scss";
+@mixin transition {
+  transition: 0.5s;
+}
+@font-face {
+  font-family: "font-vazir";
+  src: url("../font/Vazirmatn-UI-FD-Light.woff2");
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "font-vazir";
+  background-color: map-get($colors, color-background);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 1250px) {
+    max-width: 90%;
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 85%;
+  }
+  @media screen and (max-width: 500px) {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+
+.backdrop {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10;
+}
+.open-modal {
+  opacity: 1 !important;
+  pointer-events: visible !important;
+  right: 0 !important;
+}
+.modal {
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  right: -20%;
+  width: 100%;
+  direction: rtl;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: lighten(map-get($colors, color-background), 10%);
+  @include transition();
+  @media (min-width: 65rem) {
+    display: none;
+  }
+}
+.modal-items {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin-top: 90px;
+  width: 100%;
+  a {
+    text-decoration: none;
+  }
+
+  .modal-item {
+    border-bottom: 1px solid map-get($colors, color-font-p);
+    padding: 15px 52px;
+    @media screen and (max-width: 1024px) {
+      padding: 15px 7.5%;
+    }
+    @media screen and (max-width: 500px) {
+      padding: 15px 25px;
+    }
+    span {
+      font-weight: bold;
+      font-size: 18px;
+      color: map-get($colors, color-font-h1);
+    }
+    span:hover {
+      color: map-get($colors, color-hover);
+      @include transition();
+    }
+  }
+  .madal-item-Support {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    .number-21 {
+      font-weight: 100;
+    }
+  }
+}
+.container-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  @media (max-width: 1250px) {
+    max-width: 90%;
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 85%;
+  }
+  @media screen and (max-width: 500px) {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+
+.main-header {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 88px;
+  background-color: map-get($colors, color-background);
+  direction: rtl;
+  border-bottom: 1px solid map-get($colors, color-font-p);
+}
+.background-change-color {
+  background-color: #1a1a1a !important;
+  transition: all 0.3s;
+  border-bottom: 1px solid transparent;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  .main-nav-items-left {
+    a {
+      text-decoration: none;
+      color: map-get($colors, color-font-h1);
+    }
+
+    .main-nav-item-left-first:hover {
+      background: map-get($colors, color-hover);
+      color: map-get($colors, color-font-h1);
+      @include transition();
+    }
+    .main-nav-icon-left {
+      margin-right: 0.3rem;
+      color: map-get($colors, color-font-h1);
+      font-size: 17px;
+    }
+    .main-nav-icon-left:hover {
+      @include transition();
+      color: map-get($colors, color-hover);
+    }
+  }
+
+  .main-nav-items-right {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    .main-nav-item-right {
+      display: none;
+    }
+    @media (min-width: 65rem) {
+      .main-nav-item-right {
+        font-size: 17px;
+        display: block;
+        margin-left: 35px;
+      }
+    }
+
+    .main-nav-item-right:hover a {
+      color: map-get($colors, color-hover);
+      @include transition();
+    }
+    a {
+      text-decoration: none;
+      color: map-get($colors, color-font-h1);
+    }
+    .main-nav-icon-right {
+      font-size: 15px;
+      color: map-get($colors, color-background);
+      background: #e8e8e8;
+      border-radius: 50%;
+      padding: 1rem;
+    }
+
+    .hamburger-menu-container {
+      width: 1.5rem;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .hamburger-menu-item {
+        width: 100%;
+        height: 1.6px;
+        background: map-get($colors, color-font-h1);
+        transform-origin: left;
+        transition: all 0.3s;
+      }
+    }
+
+    .open-hamburger-menu {
+      .hamburger-menu-item-top {
+        transform: rotate(45deg);
+      }
+      .hamburger-menu-item-middle {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+      .hamburger-menu-item-bottom {
+        transform: rotate(-45deg);
+      }
+    }
+    @media (min-width: 65rem) {
+      .hamburger-menu-container {
+        display: none;
+      }
+    }
+  }
+}
+.main-container {
+  max-width: 1550px;
+  margin: 0 auto;
+}
+
+.container-main {
+  max-width: 1550px;
+  margin: 0 auto;
+}
+
+section {
+  width: 70%;
+  margin: 0 auto;
+  direction: rtl;
+  @media screen and (max-width: 1200px) {
+    width: 90%;
+  }
+}
+.container-imge {
+  width: 100%;
+  height: 500px;
+  margin-top: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (max-width: 800px) {
+    height: 400px;
+  }
+  @media screen and (max-width: 650px) {
+    height: 350px;
+  }
+  @media screen and (max-width: 550px) {
+    height: 300px;
+  }
+  @media screen and (max-width: 550px) {
+    height: 200px;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.title-section {
+  color: map-get($colors, color-font-h1);
+  font-size: 35px;
+  margin-top: 10px;
+  @media screen and (max-width: 800px) {
+    font-size: 30px;
+  }
+  @media screen and (max-width: 550px) {
+    font-size: 25px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 20px;
+  }
+}
+.my {
+  color: lighten(map-get($colors, color-background), 40%);
+  font-weight: bolder;
+  margin-top: 10px;
+  font-size: 17px;
+  @media screen and (max-width: 400px) {
+    font-size: 14px;
+  }
+  .my-icon {
+    color: lighten(map-get($colors, color-background), 60%);
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+  }
+}
+.info {
+  font-size: 18px;
+  margin-top: 60px;
+  color: lighten(map-get($colors, color-background), 80%);
+  @media screen and (max-width: 550px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+}
+.title-1 {
+  color: map-get($colors, color-font-h1);
+  margin-top: 40px;
+  @media screen and (max-width: 400px) {
+    margin-top: 20px;
+  }
+}
+.info-title-1 {
+  color: lighten(map-get($colors, color-background), 70%);
+  font-size: 18px;
+  @media screen and (max-width: 400px) {
+    font-size: 14px;
+  }
+}
+.title {
+  color: map-get($colors, color-font-h1);
+  margin-top: 20px;
+}
+.info-title {
+  color: lighten(map-get($colors, color-background), 70%);
+  font-size: 18px;
+  @media screen and (max-width: 550px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 14px;
+  }
+}
+.last-info {
+  margin-bottom: 80px;
+}
